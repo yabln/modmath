@@ -1,32 +1,34 @@
 package langReco.reco;
 
-import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import langModel.LanguageModel;
+import langModel.MyLaplaceLanguageModel;
 import langModel.MyNaiveLanguageModel;
 import langModel.MyNgramCounts;
+import langModel.NgramCounts;
 
 public class MyLanguageRecognizer1 extends LanguageRecognizer {
 
 	private Map<String, LanguageModel> languagesMap;
 	
-	public MyLanguageRecognizer1(String fileParam) throws FileNotFoundException{
+	public MyLanguageRecognizer1(String fileParam) {
 		super();
 		languagesMap = new HashMap<>();
-		MyNgramCounts ngc = new MyNgramCounts();
 		loadNgramCountPath4Lang(fileParam);
 		
 		for(String langcode : langNgramCountMap.keySet()){
 			for(String lname : langNgramCountMap.get(langcode).keySet()){
 				String currentLMPath = langNgramCountMap.get(langcode).get(lname);
 				//contruire le LM
-				LanguageModel lm = new MyNaiveLanguageModel();
+				NgramCounts ngc = new MyNgramCounts();
 				ngc.readNgramCountsFile(currentLMPath);
+				LanguageModel lm = new MyLaplaceLanguageModel();
 				lm.setNgramCounts(ngc);
 				// Stocker le LM
-				languagesMap.put(currentLMPath, lm);
+				languagesMap.put(langcode, lm);
 			}
 		}
 	}
@@ -34,11 +36,21 @@ public class MyLanguageRecognizer1 extends LanguageRecognizer {
 	@Override
 	public String recognizeSentenceLanguage(String sentence) {
 		//pour chaque lm dispo
+		double currentProb = 0D, prevProb = 0D;
+		String codeRet = "unk";
+		Set<String> codes = languagesMap.keySet();
 		
-		//calculer la proba
-		//conserver
-		
-		return null;
+		for(String code : codes){
+			LanguageModel lm = languagesMap.get(code);
+			//calculer la proba
+			currentProb = lm.getSentenceProb(sentence);
+			//conserver le resultat
+			if(currentProb >= prevProb){
+				prevProb = currentProb;
+				codeRet = code;
+			}
+		}
+		return codeRet;
 	}
 
 }
