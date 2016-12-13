@@ -1,0 +1,28 @@
+!SESSION 2016-12-13 09:14:00.922 -----------------------------------------------
+eclipse.buildId=4.6.1.M20160907-1200
+java.version=1.8.0_111
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=fr_FR
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.egit.ui 4 0 2016-12-13 09:17:05.692
+!MESSAGE Transport Error: Cannot get remote repository refs.
+!STACK 0
+org.eclipse.jgit.api.errors.TransportException: git@github.com:TristanElain/modmath.git: Auth fail
+	at org.eclipse.jgit.api.LsRemoteCommand.execute(LsRemoteCommand.java:221)
+	at org.eclipse.jgit.api.LsRemoteCommand.call(LsRemoteCommand.java:159)
+	at org.eclipse.egit.core.op.ListRemoteOperation.run(ListRemoteOperation.java:100)
+	at org.eclipse.egit.ui.internal.components.RefSpecPage$3.run(RefSpecPage.java:254)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+Caused by: org.eclipse.jgit.errors.TransportException: git@github.com:TristanElain/modmath.git: Auth fail
+	at org.eclipse.jgit.transport.JschConfigSessionFactory.getSession(JschConfigSessionFactory.java:159)
+	at org.eclipse.jgit.transport.SshTransport.getSession(SshTransport.java:137)
+	at org.eclipse.jgit.transport.TransportGitSsh$SshFetchConnection.<init>(TransportGitSsh.java:264)
+	at org.eclipse.jgit.transport.TransportGitSsh.openFetch(TransportGitSsh.java:162)
+	at org.eclipse.jgit.api.LsRemoteCommand.execute(LsRemoteCommand.java:198)
+	... 4 more
+Caused by: com.jcraft.jsch.JSchException: Auth fail
+	at com.jcraft.jsch.Session.connect(Session.java:512)
+	at org.eclipse.jgit.transport.JschConfigSessionFactory.getSession(JschConfigSessionFactory.java:116)
+	... 8 more
