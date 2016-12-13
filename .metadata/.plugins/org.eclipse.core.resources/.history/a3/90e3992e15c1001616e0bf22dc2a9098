@@ -1,0 +1,25 @@
+package langReco.reco;
+
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+public class MyLanguageRecognizer1 extends LanguageRecognizer {
+
+	
+	public MyLanguageRecognizer1(String fileParam) throws FileNotFoundException{
+		loadNgramCountPath4Lang(fileParam);
+		
+		for(String langcode : langNgramCountMap.keySet()){
+			for(String lname : langNgramCountMap.get(langcode).keySet()){
+				//
+			}
+		}
+	}
+
+	@Override
+	public String recognizeSentenceLanguage(String sentence) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
