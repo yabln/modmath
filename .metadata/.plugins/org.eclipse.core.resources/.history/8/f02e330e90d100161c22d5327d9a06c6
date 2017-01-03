@@ -1,0 +1,3 @@
+nl	nl_tri	lm/trigram-all-train-nl.lm
+et	et_tri	lm/trigram-all-train-et.lm
+lv	lv_tri	lm/trigram-all-train-lv.lm

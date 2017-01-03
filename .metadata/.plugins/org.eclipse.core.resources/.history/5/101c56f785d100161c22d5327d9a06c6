@@ -1,0 +1,9 @@
+package langReco.reco;
+
+public class MyLanguageRecognizer1Bis {
+
+	public MyLanguageRecognizer1Bis() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;BaselineLanguageRecognizerTest.java&apos; to &apos;Etudiant-mm_langReco/test/langReco.reco&apos;&#x0A;- Original project: &apos;Etudiant-mm_langReco&apos;&#x0A;- Destination element: &apos;Etudiant-mm_langReco/test/langReco.reco&apos;&#x0A;- Original element: &apos;langReco.reco.BaselineLanguageRecognizerTest.java&apos;" description="Copy compilation unit" destination="/test&lt;langReco.reco" element1="/test&lt;langReco.reco{BaselineLanguageRecognizerTest.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1481625099285" units="1" version="1.0"/>
+</session>

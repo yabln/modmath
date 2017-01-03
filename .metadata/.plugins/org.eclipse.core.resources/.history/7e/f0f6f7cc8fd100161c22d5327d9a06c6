@@ -1,0 +1,97 @@
+package langReco.train;
+
+
+import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.TestName;
+
+import langReco.eval.Performance;
+import langModel.LanguageModel;
+import langModel.MyLaplaceLanguageModel;
+import langModel.MyNgramCounts;
+import langModel.NgramCounts;
+
+/**
+ * @author hernandez-n
+ *
+ */
+public class LanguageModelsEstimatorTest {
+
+	/**
+	 * Duplicate this method as many times as you want to create a language model.
+	 * Give it an explicit name with respect to the created language model e.g. testCreateLmWordLangEnOrder3
+	 * to create a language model with words from texts in English and order 3.
+	 */
+	@Test
+	public void testCreateLmWordLangEnOrder3() {
+		String trainEnFilePath = "data/train/train-en.txt", lmEnFilePath = "lm/trigram-all-train-en.lm";
+		int order = 3;
+		
+		NgramCounts enNgramCounts3 = new MyNgramCounts();
+		enNgramCounts3.scanTextFile(trainEnFilePath, order);
+		enNgramCounts3.writeNgramCountFile(lmEnFilePath);	
+		
+		
+	}
+	
+	@Test
+	public void testCreateLmWordLangFrOrder2() {
+		String trainEnFilePath = "data/train/train-fr.txt", lmEnFilePath = "lm/bigram-all-train-fr.lm";
+		int order = 2;
+		
+		NgramCounts frNgramCounts2 = new MyNgramCounts();
+		frNgramCounts2.scanTextFile(trainEnFilePath, order);
+		frNgramCounts2.writeNgramCountFile(lmEnFilePath);	
+		
+		
+	}
+
+	@Test
+	public void testCreateLmWordLangEtOrder3() {
+		String trainEnFilePath = "data/train/train-et.txt", lmEnFilePath = "lm/trigram-all-train-et.lm";
+		int order = 3;
+		
+		NgramCounts etNgramCounts3 = new MyNgramCounts();
+		etNgramCounts3.scanTextFile(trainEnFilePath, order);
+		etNgramCounts3.writeNgramCountFile(lmEnFilePath);	
+		
+		
+	}
+
+	@Test
+	public void testCreateLmWordLangLvOrder3() {
+		String trainEnFilePath = "data/train/train-lv.txt", lmEnFilePath = "lm/trigram-all-train-lv.lm";
+		int order = 3;
+		
+		NgramCounts lvNgramCounts3 = new MyNgramCounts();
+		lvNgramCounts3.scanTextFile(trainEnFilePath, order);
+		lvNgramCounts3.writeNgramCountFile(lmEnFilePath);	
+		
+		
+	}
+	
+	@Test
+	public void testCreateLmWordLangNlOrder3() {
+		String trainEnFilePath = "data/train/train-nl.txt", lmEnFilePath = "lm/trigram-all-train-nl.lm";
+		int order = 3;
+		
+		NgramCounts nlNgramCounts3 = new MyNgramCounts();
+		nlNgramCounts3.scanTextFile(trainEnFilePath, order);
+		nlNgramCounts3.writeNgramCountFile(lmEnFilePath);	
+		
+		
+	}
+	
+	@Rule
+	public TestName name = new TestName();
+
+	
+	@Before
+	public void printSeparator()
+	{
+		System.out.println("\n=== " + name.getMethodName() + " =====================");
+	}
+
+}

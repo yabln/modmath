@@ -20,23 +20,39 @@ import langReco.eval.Performance;
  */
 public class MyLanguageRecognizer1Test {
 
+//	@Test
+//	public void testMylineLanguageRecognizer1Bi() {
+//		String goldSentPath = "data/gold/gold-sent.txt";
+//		String goldLangPath = "data/gold/gold-lang.txt";
+//		String path = "lm/fichConfig_bigram-100.txt";
+//
+//		
+//		LanguageRecognizer languageRecognizer = new MyLanguageRecognizer1Bis(path);
+//		// or use the following if you want to consider all the languages
+//		// LanguageRecognizer baseline = new BaselineLanguageRecognizer();
+//
+//		String hypLangFilePath = "/tmp/hyp";
+//		
+//		languageRecognizer.recognizeFileLanguage(goldSentPath, hypLangFilePath);
+//		System.out.printf("Bigram system performance = %f\n", Performance.evaluate(goldLangPath, hypLangFilePath));
+//	}
+
 	@Test
-	public void testMylineLanguageRecognizer1() {
+	public void testMylineLanguageRecognizer1Tri() {
 		String goldSentPath = "data/gold/gold-sent.txt";
 		String goldLangPath = "data/gold/gold-lang.txt";
-		String path = "lm/fichConfig_bigram-100.txt";
+		String path = "lm/fichConfig_trigram-all.txt";
 
 		
-		LanguageRecognizer languageRecognizer = new MyLanguageRecognizer1(path);
+		LanguageRecognizer languageRecognizer = new MyLanguageRecognizer1Bis(path);
 		// or use the following if you want to consider all the languages
 		// LanguageRecognizer baseline = new BaselineLanguageRecognizer();
 
 		String hypLangFilePath = "/tmp/hyp";
 		
 		languageRecognizer.recognizeFileLanguage(goldSentPath, hypLangFilePath);
-		System.out.printf("System performance = %f\n", Performance.evaluate(goldLangPath, hypLangFilePath));
+		System.out.printf("Trigram system performance = %f\n", Performance.evaluate(goldLangPath, hypLangFilePath));
 	}
-
 
 	@Rule
 	public TestName name = new TestName();
