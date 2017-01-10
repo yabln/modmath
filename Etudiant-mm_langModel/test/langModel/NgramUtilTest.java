@@ -58,7 +58,7 @@ public class NgramUtilTest {
 		                        "<s> il fait", "il fait beau", "fait beau </s>"};
 		
 		System.out.println(NgramUtil.generateNgrams(testSource, 1, 3));
-		assertEquals(testResult, NgramUtil.generateNgrams(testSource, 1, 3));
+		assertEquals(testResultArray, (String[]) NgramUtil.generateNgrams(testSource, 1, 3).toArray());
 	}
 
 	
