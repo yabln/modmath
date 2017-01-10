@@ -1,6 +1,10 @@
 package langModel;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+
+import java.util.LinkedList;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -48,7 +52,13 @@ public class NgramUtilTest {
 	 */
 	@Test
 	public void testGenerateNgrams() {
-		fail("Not yet implemented");
+		String testSource = "<s> il fait beau </s>";
+		String[] testResultArray = {"<s>", "il", "fait", "beau", "</s>", 
+								"<s> il", "il fait", "fait beau", "beau </s>",
+		                        "<s> il fait", "il fait beau", "fait beau </s>"};
+		
+		System.out.println(NgramUtil.generateNgrams(testSource, 1, 3));
+		assertEquals(testResult, NgramUtil.generateNgrams(testSource, 1, 3));
 	}
 
 	

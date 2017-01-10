@@ -1,6 +1,7 @@
 package langModel;
 
 
+import java.util.LinkedList;
 import java.util.List;
 
 
@@ -8,6 +9,7 @@ import java.util.List;
  * Class NgramUtil: class containing useful functions to deal with n-grams.
  * 
  * @author N. Hernandez and S. Quiniou (2015)
+ *
  *
  */
 public class NgramUtil {
@@ -20,8 +22,9 @@ public class NgramUtil {
 	 * @return the number of words of the given sequence.
 	 */
 	public static int getSequenceSize (String sequence) {
-		//TODO
-		return -1;
+		//transformation de la séquence en tableau de mots afin de retourner sa taille.
+		String[] tabWord = sequence.split("\\s+");
+		return tabWord.length;
 	}
 
 	
@@ -39,9 +42,18 @@ public class NgramUtil {
 	 * @return history of the given n-gram (the length of the history is order-1).  
 	 */
 	public static String getHistory (String ngram, int order) {
-		//TODO
-		
-		return "";
+		String[] tabNgram = ngram.split("\\s+");
+		int i = tabNgram.length - order<0 ? 0 : tabNgram.length-order;
+		String history = "";
+		while(i <= tabNgram.length - 1){
+			if(!history.equals("")){
+				history += " ";
+			}
+			history += tabNgram[i];
+			
+			i++;
+		}
+		return history;
 	}
 
 
@@ -61,8 +73,18 @@ public class NgramUtil {
 	 * @return the list of n-grams constructed from the sentence.
 	 */
 	public static List<String> decomposeIntoNgrams (String sentence, int order) {
-		//TODO
-		return null;
+		List<String> listNgrams = new LinkedList<>();
+		String[] tabWord = sentence.split("\\s+");
+		String sequence = "";
+		//faire avec le tableau pour se débarasser de l'espace de fin ou autre
+		for(int i = 0; i < tabWord.length; i++){
+			if(!sequence.equals("")) {
+				sequence += " ";
+			}
+			sequence += tabWord[i];
+			listNgrams.add(NgramUtil.getHistory(sequence, order));
+		}
+		return listNgrams;
 	}
 	
 	
@@ -93,8 +115,11 @@ public class NgramUtil {
 	 * @return a list of generated n-grams from the sentence.
 	 */
 	public static List<String> generateNgrams (String sentence, int minOrder, int maxOrder) {
-		//TODO
-		return null;
+		List<String> nGrams = new LinkedList<>();
+		for(int order = minOrder; order <= maxOrder; order++){
+			nGrams.addAll(NgramUtil.decomposeIntoNgrams(sentence, order));
+		}
+		return nGrams;
 	}
 
 }
